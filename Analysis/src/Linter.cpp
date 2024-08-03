@@ -969,7 +969,8 @@ private:
     {
         for (auto& g : globals)
         {
-            if (g.second.function && !g.second.used && g.first.value[0] != '_')
+            if (g.second.function && !g.second.used && g.first.value[0] != '_'
+				&& strcmp(g.first.value, "Start") == 0 && strcmp(g.first.value, "Update") == 0 && strcmp(g.first.value, "End") == 0)
                 emitWarning(
                     *context,
                     LintWarning::Code_FunctionUnused,
