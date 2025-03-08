@@ -21,6 +21,10 @@ if(LUAU_STATIC_CRT)
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
 
+if (CMAKE_BUILD_TYPE MATCHES "Debug")
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fsanitize=address")
+endif()
+
 project(Luau LANGUAGES CXX C)
 add_library(Luau.Common INTERFACE)
 add_library(Luau.CLI.lib STATIC)
