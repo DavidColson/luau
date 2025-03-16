@@ -13,6 +13,8 @@ namespace Luau
 
 struct HotComment;
 
+using ModuleName = std::string;
+
 struct LintWarning
 {
     // Make sure any new lint codes are documented here: https://luau-lang.org/lint
@@ -56,6 +58,8 @@ struct LintWarning
 
     Code code;
     Location location;
+	// POLYBOX added modulename for more useful error messages
+    ModuleName moduleName;
     std::string text;
 
     static const char* getName(Code code);

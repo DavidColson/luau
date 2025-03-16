@@ -106,7 +106,7 @@ static void emitWarning(LintContext& context, LintWarning::Code code, const Loca
     std::string message = vformat(format, args);
     va_end(args);
 
-    LintWarning warning = {code, location, message};
+    LintWarning warning = {code, location, context.module->name, message};
     context.result.push_back(warning);
 }
 

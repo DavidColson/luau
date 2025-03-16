@@ -1086,6 +1086,10 @@ void Frontend::checkBuildQueueItem(BuildQueueItem& item)
         item.stats.timeLint += getTimestamp() - timestamp;
 
         module->lintResult = classifyLints(warnings, config);
+
+		// POLYBOX
+		// @todo: iterate sourceNodes here and run lint checks on them
+		// then merge the results
     }
 
     if (!item.options.retainFullTypeGraphs)
