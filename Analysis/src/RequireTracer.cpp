@@ -27,7 +27,9 @@ struct RequireTracer : AstVisitor
     {
         AstExprGlobal* global = expr->func->as<AstExprGlobal>();
 
-        if (global && global->name == "require" && expr->args.size >= 1)
+		// POLYBOX_EDIT: in polybox we call it include and it'll work a bit differently
+		// but we still want typechecking on include calls
+        if (global && global->name == "include" && expr->args.size >= 1)
             requireCalls.push_back(expr);
 
         return true;

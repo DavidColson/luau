@@ -98,7 +98,9 @@ declare os: {
     clock: () -> number,
 }
 
-@checked declare function require(target: any): any
+-- POLYBOX_EDIT: in polybox we call it include and it'll work a bit differently
+-- but we still want typechecking on include calls
+@checked declare function include(target: string): any
 
 @checked declare function getfenv(target: any): { [string]: any }
 

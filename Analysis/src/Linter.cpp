@@ -829,7 +829,9 @@ private:
         if (!glob)
             return false;
 
-        return glob->name == "require";
+		// POLYBOX_EDIT: in polybox we call it include and it'll work a bit differently
+		// but we still want typechecking on include calls
+        return glob->name == "include";
     }
 
     bool visit(AstStatAssign* node) override

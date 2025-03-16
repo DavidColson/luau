@@ -387,8 +387,10 @@ void registerBuiltinGlobals(Frontend& frontend, GlobalTypes& globals, bool typeC
         attachDcrMagicFunction(ttv->props["pack"].type(), dcrMagicFunctionPack);
     }
 
-    attachMagicFunction(getGlobalBinding(globals, "require"), magicFunctionRequire);
-    attachDcrMagicFunction(getGlobalBinding(globals, "require"), dcrMagicFunctionRequire);
+	// POLYBOX_EDIT: in polybox we call it include and it'll work a bit differently
+	// but we still want typechecking on include calls
+    attachMagicFunction(getGlobalBinding(globals, "include"), magicFunctionRequire);
+    attachDcrMagicFunction(getGlobalBinding(globals, "include"), dcrMagicFunctionRequire);
 }
 
 static std::vector<TypeId> parseFormatString(NotNull<BuiltinTypes> builtinTypes, const char* data, size_t size)

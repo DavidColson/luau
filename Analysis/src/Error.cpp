@@ -274,10 +274,11 @@ struct ErrorConverter
 
     std::string operator()(const Luau::UnknownRequire& e) const
     {
+		// POLYBOX_EDIT: in polybox we call require include 
         if (e.modulePath.empty())
-            return "Unknown require: unsupported path";
+            return "Unknown include: unsupported path";
         else
-            return "Unknown require: " + e.modulePath;
+            return "Unknown include: " + e.modulePath;
     }
 
     std::string operator()(const Luau::IncorrectGenericParameterCount& e) const

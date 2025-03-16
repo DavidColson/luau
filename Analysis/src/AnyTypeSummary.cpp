@@ -804,7 +804,9 @@ const Scope* AnyTypeSummary::findInnerMostScope(const Location location, const M
 
 std::optional<AstExpr*> AnyTypeSummary::matchRequire(const AstExprCall& call)
 {
-    const char* require = "require";
+	// POLYBOX_EDIT: in polybox we call it include and it'll work a bit differently
+	// but we still want typechecking on include calls
+    const char* require = "include";
 
     if (call.args.size != 1)
         return std::nullopt;
